@@ -1,29 +1,116 @@
-# README #
+# InApps Picasso
 
-This README would normally document whatever steps are necessary to get your application up and running.
+---
 
-### What is this repository for? ###
+This is a very simple Boilerplate application, this has following features.
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+  - User can Sign In and Up
+  - After signing in he can see a list of items
 
-### How do I get set up? ###
+> It uses a mock json server which doesn't store or validate anything, so for signing in/up any email, password will simply work.
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+[RiverPod](https://riverpod.dev/) was used for state management
+## Getting Started 🚀
 
-### Contribution guidelines ###
+This project contains 3 flavors:
 
-* Writing tests
-* Code review
-* Other guidelines
+- development
+- staging
+- production
 
-### Who do I talk to? ###
+To run the desired flavor either use the launch configuration in VSCode/Android Studio or use the following commands:
 
-* Repo owner or admin
-* Other community or team contact
+```sh
+# Development
+$ flutter run --flavor development --target lib/main_development.dart
+
+# Staging
+$ flutter run --flavor staging --target lib/main_staging.dart
+
+# Production
+$ flutter run --flavor production --target lib/main_production.dart
+```
+
+_\*Flutter Boilerplate works on iOS, Android, and Web._
+
+---
+
+
+## Use MakeFile / Derry to avoid writing your own scripts.
+
+You can run all these scripts manually or could use  [MakeFile](https://github.com/SimpleBoilerplates/Flutter/blob/master/makefile) / [Derry](https://pub.dev/packages/derry) and maintain a file, where you can define all those scripts and run in a very convinient way. All the scripts for this project is defined here [derry scripts](https://github.com/SimpleBoilerplates/Flutter/blob/master/derry.yaml) and [makefile scripts](https://github.com/SimpleBoilerplates/Flutter/blob/master/makefile)
+
+Example: 
+
+run `make watch` or `derry watch` instead of
+
+```sh
+flutter pub run build_runner watch --delete-conflicting-outputs
+``` 
+
+run `make build` or `derry build` instead of
+
+```sh
+flutter pub run build_runner build --delete-conflicting-outputs
+``` 
+
+or run `make build_apk_dev` or `derry build_apk_dev` instead of 
+
+```sh
+flutter build apk --flavor development -t lib/main_development.dart 
+``` 
+---
+
+## Running Tests 🧪
+
+To run all unit and widget tests use the following command:
+
+```sh
+$ flutter test --coverage --test-randomize-ordering-seed random
+```
+
+To view the generated coverage report you can use [lcov](https://github.com/linux-test-project/lcov).
+
+```sh
+# Generate Coverage Report
+$ genhtml coverage/lcov.info -o coverage/
+
+# Open Coverage Report
+$ open coverage/index.html
+```
+
+---
+
+## Working with Translations 🌐
+
+
+### Adding Strings
+
+1. To add a new localizable string, open the `app_en.arb` file at `assets/land/arb/en.json`.
+
+```json
+{
+  "home" : "Home",
+  "loading" : "Loading",
+  "email" : "Email",
+  "password" : "Password",
+  "name" : "Name",
+  "sign_in" : "Sign In",
+  "sign_up" : "Sign Up"
+
+}
+```
+
+
+2. After adding new 
+
+```dart
+import 'package:easy_localization/easy_localization.dart';
+
+@override
+Widget build(BuildContext context) {
+  return Text("helloWorld".tr());
+}
+```
+
+
