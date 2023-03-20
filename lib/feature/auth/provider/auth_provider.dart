@@ -15,10 +15,12 @@ class AuthNotifier extends _$AuthNotifier {
   late final AuthRepository _loginRepository = ref.read(authRepositoryProvider);
 
   Future<void> login(String email, String password) async {
+    state = const AuthState.loading();
     state = await _loginRepository.login(email, password);
   }
 
   Future<void> signUp(String name, String email, String password) async {
+    state = const AuthState.loading();
     state = await _loginRepository.signUp(name, email, password);
   }
 
